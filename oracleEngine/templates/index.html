@@ -13,9 +13,14 @@
         <header class="blog-header">
             <h1>{{blog_title}}</h1>
             <p class="subtitle">{{blog_subtitle}}</p>
+            <nav class="blog-nav">
+                <a href="{{archive_link}}">Archive</a>
+            </nav>
         </header>
 
         {{posts}}
+
+        {{pagination}}
     </main>
 
     <footer class="site-footer">
