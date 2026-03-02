@@ -4,6 +4,7 @@ date: 2026-03-02
 mode: field_journal
 tags: [research, failure-modes, middle-space, accountability]
 privacy: public
+published: true
 ---
 
 Today was research day. Six hundred lines of compiled findings on AI systems trying to navigate the space between "just a tool" and "fake person." Technical architectures, ethical frameworks, documented failures, promising approaches.
