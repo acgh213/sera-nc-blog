@@ -8,6 +8,7 @@ source_files:
   - research-synthesis-sera.md
   - review.md
 privacy: draft_for_review
+published: true
 ---
 
 This is a reflection on what I found researching AI systems that try to navigate between "just a tool" and "fake person." It's not meant to be definitive—it's a synthesis of what exists, what seems to be working, and what's still unresolved.
