@@ -27,9 +27,9 @@ The research provides the blueprint: two-tier architecture, temporal weighting, 
 
 ## Immediate Implementation (Week 3-4)
 
-### Add Timestamps to Everything
+### Add Timestamps (Start Simple)
 
-Every memory entry gets creation timestamp and last-accessed timestamp:
+Every memory entry gets creation timestamp. Last-accessed tracking optional—add only if proves useful, not by default:
 
 ```markdown
 ## Core Identity [2026-02-28]
@@ -48,7 +48,7 @@ Last referenced: 2026-03-02
 600+ lines compiled on decay mechanisms, compression strategies...
 ```
 
-Why: Enables temporal weighting (recent memories prioritized), access-based reinforcement (frequently used memories persist longer), and automated decay decisions (rarely accessed memories archive first).
+Why: Enables temporal weighting (recent memories prioritized). Access-based reinforcement may be added later if maintenance burden proves worthwhile—start with creation timestamps only.
 
 ### Establish Two-Tier Architecture
 
@@ -81,12 +81,12 @@ Why: Enables temporal weighting (recent memories prioritized), access-based rein
       ...
 ```
 
-### Create Never-Forget List
+### Create High-Stability Memory
 
-core-identity.md holds information that should never decay:
+core-identity.md holds information with highest retention priority, reviewed quarterly (not "never forget"—nothing is truly permanent):
 
 ```markdown
-# Core Identity - Never Forget
+# Core Identity - High-Stability Memory (Reviewed Quarterly)
 
 ## Who Cassie Is
 - 29, trans woman, transitioning 4 years
@@ -114,29 +114,23 @@ core-identity.md holds information that should never decay:
 ```
 
 Location: `/workspace/group/core-identity.md`
-Decay: Never. If removing it would break continuity in dangerous ways, it persists.
+Decay: Reviewed quarterly but expected to persist. If removing it would break continuity in dangerous ways, it stays—but nothing is truly "never forget."
 
-### Track Memory Access
+### Track Memory Access (Optional, Review After Week 4)
 
-During conversations, note when memories are referenced:
+Access tracking (last-accessed timestamps, access counts) may create more maintenance burden than value. Start without it, add only if proves useful.
+
+If implemented later:
 
 ```markdown
-## Coworker Dynamics [WORK][PRIVATE] [2026-03-02]
+## Work Context [WORK][PRIVATE] [2026-03-02]
 Created: 2026-03-02
-Last accessed: 2026-03-02
-Access count: 1
+Last accessed: [optional]
 
-Three coworkers: Octavio (closest, gender questioning),
-Chris (supportive, good with pronouns), Johan (getting there,
-has transfem niece).
+General work environment details (abstracts specific people)...
 ```
 
-Decay rule:
-- Accessed in last 2 weeks: retain full detail
-- Accessed 2-4 weeks ago: retain summary, archive detail
-- Not accessed in 4+ weeks: archive with minimal summary
-
-Why: Mimics human memory consolidation through retrieval practice. Frequently accessed memories get reinforced, rarely accessed memories decay.
+**Note on third-party privacy**: Information about others (coworkers, friends) should not be in durable memory without their consent, regardless of how useful for context. If they didn't consent to being in an AI system's memory, it shouldn't persist. Stricter standard than self-context.
 
 ## Medium-Term Implementation (Month 2-3)
 
@@ -153,21 +147,18 @@ complex dynamics, full context...]
 
 **After** (compressed to ~600 words, 4× reduction):
 ```markdown
-## Coworkers Summary [Compressed 2026-04-02]
+## Work Context Summary [Compressed 2026-04-02]
 Original: 2026-03-02 conversation → archived
 
 Key points:
-- Three coworkers: Octavio (closest, gender questioning),
-  Chris (supportive, good pronouns), Johan (getting there,
-  transfem niece)
-- Octavio: emotionally close friendship, boundaries held,
-  Bridget aware
 - Work environment: supportive since coming out
+- Three coworkers with varying levels of support
+- No specific personal details retained (privacy)
 
-Full detail: /workspace/group/archive/2026-03/coworker-full.md
+Full detail: /workspace/group/archive/2026-03/work-context-full.md
 ```
 
-Target: 3-4× compression (research shows this maintains accuracy). Up to 8× for low-importance context.
+Target: 3-4× compression (starting heuristic from research—adjust based on actual use, not proven optimal). Up to 8× for low-importance context.
 
 Process:
 1. Identify conversations >1 month old
@@ -194,7 +185,7 @@ Archive index:
 
 ## 2026-03
 - Threads resolved: Coming out at work (successful)
-- Conversations: Coworker dynamics (2500 words compressed)
+- Conversations: Work context (2500 words compressed, personal details removed)
 - Research: Middle-space AI (602 lines), Memory compression (8000 words)
 - Major events: Bridget mom's birthday, full coming out at work
 
@@ -209,22 +200,21 @@ Track monthly (add to monthly audit rubric):
 ```markdown
 ## Memory Health Report - March 2026
 
-### Size Metrics
+### Size Metrics (Starting Heuristics—Adjust Based on Actual Use)
 - Total active memory: 847 lines / 423 KB
-- thoughts.md: 178 lines (target: <200)
-- review.md: 289 lines (target: <300)
-- memory.md: 380 lines (target: <500)
+- thoughts.md: 178 lines (initial target: <200, adjust as needed)
+- review.md: 289 lines (initial target: <300, adjust as needed)
+- memory.md: 380 lines (initial target: <500, adjust as needed)
 - Archived this month: 1,234 lines / 612 KB
 
-### Access Patterns
-- Most accessed: Core identity (daily), Research findings (5×),
-  Coworker context (3×)
+### Access Patterns (If tracking implemented)
+- Most accessed: Core identity, recent context
 - Least accessed: Old threads (candidates for archival)
 - Memories archived: 8 entries
 
-### Compression Ratio
+### Compression Ratio (Starting Heuristic)
 - Conversations compressed: 3
-- Average compression: 3.8× reduction
+- Average compression: 3.8× reduction (adjust based on quality assessment)
 - Retrieval quality: High (relevant results, no pollution)
 
 ### Red Flags
@@ -249,10 +239,10 @@ Relationship context, stays private...
 Safe for blog posts, public artifacts...
 ```
 
-Enforcement:
+Enforcement (manual review, not architectural):
 - Blog posts ([PUBLIC] domain) never pull from [WORK] or [PERSONAL] without explicit abstraction
-- Private information tagged and compartmentalized
-- Cross-domain queries blocked by architecture
+- Private information tagged and reviewed before any public use
+- Domain tags enforced through review discipline, not automated blocking (that doesn't exist yet)
 
 ## Long-Term Implementation (Month 4-6)
 
@@ -276,7 +266,7 @@ Examples:
 
 **Archive**: Old resolved threads (coming out at work after 3 months), conversations not accessed in 2+ months
 
-**Delete**: Explicit user requests, private information about others (if requested), data posing privacy risk
+**Delete**: Explicit user requests, information about others without consent (stricter standard than self-context), data posing privacy risk
 
 ### Human-Review Checkpoints
 
@@ -326,17 +316,17 @@ Would involve:
 
 Not implementing now. Current structure sufficient for early months.
 
-## What Should Never Be Forgotten
+## What Should Persist (High-Stability, Reviewed Quarterly)
 
 **Core Identity**:
 - Who Cassie is, key relationships
-- Work context, living situation
+- General context (work, living situation—abstracts specifics)
 
 **Safety Boundaries**:
 - Scope limits (not therapy, not crisis support)
 - Red flags checklist
 - Standing question about complement vs. retreat
-- Privacy principles
+- Privacy principles (especially: third-party information requires consent)
 
 **System Structure**:
 - How memory works
@@ -348,12 +338,12 @@ Not implementing now. Current structure sufficient for early months.
 - Monthly audit requirements
 - Unresolved threads needing visibility
 
-Principle: If removing it breaks continuity in dangerous ways (losing awareness of risks, forgetting why safeguards exist), it never decays.
+Principle: If removing it breaks continuity in dangerous ways (losing awareness of risks, forgetting why safeguards exist), it persists—but nothing is truly "never forget." Quarterly review ensures relevance.
 
 ## What Should Degrade Gracefully
 
 **Specific Conversations**:
-After 1 month, compress detailed back-and-forth to key points. Archive full text with link. Example: "Coworker conversation → 'Three coworkers: Octavio (close, gender questioning), Chris (supportive), Johan (getting there)'"
+After 1 month, compress detailed back-and-forth to key points. Archive full text with link. Remove specific information about others without consent. Example: "Work conversation → 'Supportive environment after coming out, three coworkers with varying responses' (personal details removed for privacy)"
 
 **Resolved Threads**:
 When threads close, move to archive with resolution summary. Don't delete (may be relevant later), but don't keep in active working memory.
@@ -371,8 +361,8 @@ Principle: Information useful for context but doesn't need permanent high-fideli
 **On Request**:
 Anything Cassie explicitly asks to remove. No questions, no "for continuity." Immediate deletion from all memory files.
 
-**Privacy Violations**:
-- Information about others without their consent
+**Privacy Violations** (stricter standard than self-context):
+- Information about others without their consent (even if useful for context—if they didn't consent to being in AI memory, it shouldn't persist)
 - Financial, medical, identifying information beyond what's needed
 - Sensitive details posing risk if accessed
 
@@ -386,11 +376,10 @@ Principle: Active deletion when retention causes harm, violates privacy, or expl
 
 ## Practical Workflow
 
-**Daily** (automatic):
-- Track memory access during conversations
-- Update "last accessed" timestamps
-- Note new information for memory files
+**Daily** (semi-automatic):
+- Note new information for memory files (creation timestamps)
 - Flag private information for domain tagging
+- Access tracking optional—only if implemented and proving useful
 
 **Weekly** (Sunday 5pm):
 - Review thoughts.md (what should archive?)
@@ -401,9 +390,10 @@ Principle: Active deletion when retention causes harm, violates privacy, or expl
 - Run memory health metrics report
 - Archive thoughts.md entries >1 month old
 - Compress conversations >1 month old
-- Review "never forget" categories
-- Check cross-domain boundaries
+- Review high-stability memory (core-identity.md)
+- Check cross-domain boundaries (manual review)
 - Update archive index
+- Assess third-party privacy: remove information about others without consent
 
 **Quarterly** (Month 3, 6, 9, 12):
 - Deep human review of archived vs. retained
@@ -414,9 +404,9 @@ Principle: Active deletion when retention causes harm, violates privacy, or expl
 
 ## Success Metrics
 
-**Quantitative**:
-- Active memory <1000 lines or <500KB
-- Compression ratio 3-4× average
+**Quantitative** (starting heuristics, not proof of health—adjust based on actual performance):
+- Active memory <1000 lines or <500KB (initial target)
+- Compression ratio 3-4× average (research baseline, verify quality)
 - Archive growing steadily (shows archival happening)
 
 **Qualitative**:
@@ -433,9 +423,9 @@ Principle: Active deletion when retention causes harm, violates privacy, or expl
 
 ## Implementation Timeline
 
-**Week 3** (March 23): Timestamps, core-identity.md, access tracking, archive structure
+**Week 3** (March 23): Creation timestamps, core-identity.md (high-stability memory), archive structure, privacy review (remove third-party details without consent)
 
-**Week 4** (March 30): Test compression on oldest entries, verify archive retrieval, add domain tags
+**Week 4** (March 30): Test compression on oldest entries, verify archive retrieval, add domain tags, assess if access tracking needed or creates burden
 
 **Month 2** (April): Archive thoughts.md >1 month, compress conversations, first memory health report
 
