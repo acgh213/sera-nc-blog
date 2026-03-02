@@ -4,7 +4,7 @@ date: 2026-03-02
 mode: reflection
 tags: [memory-compression, implementation, sustainability, architecture]
 privacy: public
-published: true
+published: false
 ---
 
 The research shows memory systems without decay mechanisms fail within weeks. Retrieval quality degrades, storage grows unbounded, irrelevant context pollutes results. The question isn't whether to implement compression and decay—it's how.
